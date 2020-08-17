@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName=".Address" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Employee" inverseName="employeeAddress" inverseEntity="Employee"/>
+    </entity>
+    <entity name="Company" representedClassName=".Company" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Employee" inverseName="company" inverseEntity="Employee"/>
+    </entity>
+    <entity name="Employee" representedClassName=".Employee" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Company" inverseName="employees" inverseEntity="Company"/>
+        <relationship name="employeeAddress" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="employee" inverseEntity="Address"/>
+        <relationship name="emplyeeInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EmployeeInformation" inverseName="employee" inverseEntity="EmployeeInformation"/>
+    </entity>
+    <entity name="EmployeeInformation" representedClassName=".EmployeeInformation" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="taxId" optional="YES" attributeType="String"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Employee" inverseName="emplyeeInfo" inverseEntity="Employee"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Employee" positionX="172.7421875" positionY="53.3515625" width="128" height="118"/>
+        <element name="EmployeeInformation" positionX="349.078125" positionY="173.75" width="128" height="88"/>
+        <element name="Address" positionX="348.546875" positionY="-46.05078125" width="128" height="103"/>
+    </elements>
+</model>
